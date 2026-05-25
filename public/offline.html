@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline | Urban Harvest Hub</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #f0fdf4;
+        color: #14532d;
+        display: flex; align-items: center; justify-content: center;
+        min-height: 100vh; margin: 0; text-align: center; padding: 1rem;
+      }
+      .box { max-width: 28rem; }
+      .emoji { font-size: 4rem; }
+      h1 { font-size: 1.75rem; margin: 0.5rem 0; }
+      p { color: #166534; }
+      button {
+        margin-top: 1rem; background: #16a34a; color: #fff; border: none;
+        padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600;
+        cursor: pointer; font-size: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="emoji">🌱</div>
+      <h1>You're offline</h1>
+      <p>
+        No internet connection right now. Any pages you've already visited are
+        still available — and we'll reconnect automatically when you're back online.
+      </p>
+      <button onclick="location.reload()">Try again</button>
+    </div>
+  </body>
+</html>

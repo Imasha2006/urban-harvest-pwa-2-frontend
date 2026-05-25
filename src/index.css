@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BASE LAYER — global defaults
+   ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-gray-800 font-body antialiased;
+  }
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  /* Visible focus ring on every focusable element (accessibility) */
+  *:focus-visible {
+    @apply outline-none ring-4 ring-harvest-400/50 rounded;
+  }
+}
+
+/* ============================================
+   COMPONENTS LAYER — reusable patterns
+   (assignment: custom component via @layer)
+   ============================================ */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-harvest-600 text-white font-semibold
+           px-6 py-3 rounded-lg shadow-sm
+           transition-all duration-200
+           hover:bg-harvest-700 hover:scale-[1.03]
+           active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border-2 border-harvest-600 text-harvest-600 font-semibold
+           bg-transparent px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-harvest-50 hover:scale-[1.03]
+           dark:text-harvest-400 dark:border-harvest-400 dark:hover:bg-harvest-900/30;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-gray-200 text-gray-800 font-semibold
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-gray-300
+           dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-800
+           border border-gray-200 dark:border-gray-700
+           rounded-xl shadow-md p-6
+           transition-all duration-300;
+  }
+  .card-interactive {
+    @apply card cursor-pointer hover:-translate-y-1 hover:shadow-xl
+           hover:border-harvest-300 dark:hover:border-harvest-700;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full
+           text-xs font-medium
+           bg-harvest-100 text-harvest-800
+           dark:bg-harvest-900 dark:text-harvest-200;
+  }
+  .badge-earth {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full
+           text-xs font-medium
+           bg-earth-100 text-earth-800
+           dark:bg-earth-900 dark:text-earth-200;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg
+           border border-gray-300 dark:border-gray-600
+           bg-white dark:bg-gray-800
+           text-gray-900 dark:text-gray-100
+           placeholder-gray-400
+           transition-colors duration-200
+           focus:border-harvest-500 focus:ring-2 focus:ring-harvest-500/20;
+  }
+  .input-field[aria-invalid='true'] {
+    @apply border-red-500 focus:ring-red-500/20;
+  }
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20;
+  }
+  .nav-link {
+    @apply text-white font-medium px-3 py-2 rounded transition-colors
+           hover:bg-harvest-700 hover:text-white;
+  }
+  .nav-link.active {
+    @apply bg-harvest-800 underline underline-offset-4;
+  }
+  /* Skip link for keyboard users (a11y) */
+  .skip-link {
+    @apply absolute -top-10 left-2 z-50 bg-harvest-700 text-white
+           px-4 py-2 rounded focus:top-2 transition-all;
+  }
+}
+
+/* ============================================
+   UTILITIES LAYER — custom utilities
+   (assignment: custom utility via @layer)
+   ============================================ */
+@layer utilities {
+  /* Gradient text utility — used across hero sections */
+  .text-gradient-green {
+    @apply bg-gradient-to-r from-harvest-500 to-emerald-600 bg-clip-text text-transparent;
+  }
+  .text-gradient-earth {
+    @apply bg-gradient-to-r from-earth-500 to-earth-700 bg-clip-text text-transparent;
+  }
+  /* Lift-on-hover utility */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl;
+  }
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-md bg-white/30 border border-white/20 shadow-lg
+           dark:bg-gray-900/30 dark:border-gray-700/40;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
