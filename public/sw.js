@@ -114,7 +114,16 @@ self.addEventListener('push', (event) => {
   )
 })
 
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close()
-  event.waitUntil(self.clients.openWindow('/'))
+// Notification click handler
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close()
+  if (e.action === 'view' || e.action === 'book') {
+    e.waitUntil(clients.openWindow('/events'))
+  }
+})// Notification click handler
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close()
+  if (e.action === 'view' || e.action === 'book') {
+    e.waitUntil(clients.openWindow('/events'))
+  }
 })
