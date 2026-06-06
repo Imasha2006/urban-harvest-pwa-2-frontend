@@ -7,7 +7,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       // dev: forward /api to the Express backend
-      '/api': { target: 'http://localhost:4000', changeOrigin: true },
+      '/api': { target: 'https://urban-harvest-api-2-backend.onrender.com', changeOrigin: true },
     },
   },
   build: { outDir: 'dist', sourcemap: true },
